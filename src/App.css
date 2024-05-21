@@ -1,0 +1,20 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.table-heading-flex{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding : 10px;
+  background-color: white;
+  color : black
+}
+
+.table-heading-individual-component{
+  padding: 2px 60px;
+  background-color: #00b4d8;
+}
