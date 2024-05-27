@@ -1,0 +1,153 @@
+.post {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    animation: animate-in 1s ease-out forwards;
+    text-decoration: none;
+    z-index: 0;
+  }
+  .putForm a{
+    text-decoration: none;
+  }
+  .test{
+    /* border: 3px solid black; */
+    position: absolute;
+    right: 0%;
+    margin-top: -2rem;
+  }
+  .post > a  {
+    text-decoration: none;
+  }
+  .ctaaction{
+    display: inline-grid;
+    justify-content: space-between;
+  }
+  .days{
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #7e8b8a;
+  }
+
+  .dateandweek{
+    display: flex;
+    align-items: center;
+  }
+
+  .dateandweek>p{
+    margin-right: .5rem;
+  }
+  
+  .author {
+    /* font-size: 1.2rem; */
+    font-weight: bold;
+    color: #543280;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .astatus{
+    font-size: 1rem;
+    font-weight: bold;
+    color: #951f2c;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .vdata{
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #7e8b8a;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .comments {
+    margin-top: .5rem;
+    white-space: pre-wrap;
+    font-size: 1rem;
+    margin: 0.25rem 0 0 0;
+    color: #7e8b8a;
+    font-style: italic;
+  }
+  .hover-div {
+    border: 3px solid #000;
+    cursor: pointer;
+    
+}
+.hoverimage{
+  position: fixed;
+}
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #a990fb;
+    color: #2a2630;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn:hover {
+    background-color: #8c6cf7;
+  }
+  .disablebtn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #aaa6b7;
+    color: #2a2630;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .imageUrl{
+    display: inline;
+  }
+  .AimageUrl{
+    margin-top: 1rem;
+  }
+
+  .AimageUrl:hover{
+
+  }
+  .overlay{
+    position: fixed;
+  top: 30px;
+  right: 0;
+  }
+  .popupmodal{
+    background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  max-width: 90%; /* Ensure modal is not too wide */
+  max-height: 90%; /* Ensure modal is not too tall */
+  overflow: auto; /* Scroll if content overflows */
+  }
+  .popupmodal>img{
+    max-width: 215%; /* Image fits within modal width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    z-index: 10;
+  }

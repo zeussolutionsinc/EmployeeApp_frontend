@@ -1,0 +1,110 @@
+.form {
+    background-color: #fff;
+    padding: 0.25rem 1rem;
+    width: 20rem;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #6233b9;
+    font-weight: bold;
+  }
+  .checkboxlabel{
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    color: #6233b9;
+    font-weight: bold;
+  }
+  
+  .input{
+    display: block;
+    width: 95%;
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: none;
+    /* background-color: #c4a9e4; */
+    color: #28262c;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  
+  .actions button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #a990fb;
+    color: #2a2630;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-weight: bold;
+    font-size:medium;
+  }
+  
+  .actions button:hover {
+    background-color: #8c6cf7;
+  }
+  
+  .actions button[type='button'] {
+    background-color: transparent;
+  }
+  
+  .actions button[type='button']:hover {
+    color: #d1bee6;
+  }
+
+  .actions a{
+    text-decoration: none;
+  }
+
+  .linkactions{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #ececec;
+    color: #2a2630;
+    border: none;
+    border-radius: 4px;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+.customfileinput::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.customfileinput::before {
+  content: 'Upload Files';
+  display: flex;
+  justify-content: center;
+  /* background: linear-gradient(top, #f9f9f9, #e3e3e3); */
+  border: 2px dotted #8c6cf7;
+  border-radius: 3px;
+  padding: 2rem;
+  margin: 1rem 0;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+
+.customfileinput:hover::before {
+  border-color: black;
+}
+
+.customfileinput:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
