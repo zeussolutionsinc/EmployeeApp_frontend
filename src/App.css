@@ -1,56 +1,98 @@
-/* body {
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-  color : black;
-} */
-
 body,
 html {
   margin: 0;
   padding: 0;
-  width: 100%;
-  /* Ensure full width */
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-  color: black;
+  height: 100%;
+  background-color: #f0f0f0;
+  /* Or whatever background color you prefer */
 }
 
-/* .form-container {
-  /* margin: 2px auto; */
-    /* border-top: 1px solid #dc3333; */
-
-    /* Red border */
-    /* padding: 2px; */
-    /* Padding inside the border */ 
-
-.header-ribbon {
-  margin-top: 6px;
+/* Root element styling */
+#root {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  /* justify-content: space-between; */
-  /* background-color: #dc3333; */
+  height: 100%;
   width: 100%;
-  padding: 1vh 20px;
 }
 
-.logo {
-  height: 5vh;
-  margin-left: 1vh;
-}
-
-.title {
-  flex-grow: 0.8;
-  margin-top : px;
-  text-align: center;
-}
-
-.form-container {
+/* Dashboard layout styling */
+.dashboard-layout {
+  background-color: #f0f0f0;
+  width: 90vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+}
+
+/* .table-heading-flex{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding : 10px;
+  background-color: white;
+  color : black
+}
+
+.table-heading-individual-component{
+  padding: 2px 60px;
+  background-color: #00b4d8;
+} */
+
+.infocard-flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  color: black;
+  margin: 10px;
+  width: 90vw;
+}
+
+.infocard {
+  border-radius: 8px;
+  padding: 20px 15px;
+  text-align: center;
+  width: 150px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 2px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timesheet {
+  height: 400px;
+  width: 90vw;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.previous-records-flexBox {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  color: black;
+  margin: 10px;
+  width: 90vw;
+  gap : 15px;
+}
+
+.prev-records {
+  width: 90vw;
+  height: 100px;
+  color: black;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: start;
 }
