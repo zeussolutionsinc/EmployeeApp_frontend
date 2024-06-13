@@ -12,10 +12,14 @@ import {
 } from "@mui/material";
 import NewProjectPopUp from "./NewProjectPopUp";
 import CloseIcon from "@mui/icons-material/Close";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+// import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+// import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { DateTime } from "luxon";
-import { json } from "react-router-dom";
+// import { json } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 function getAllDatesOfMonth(date) {
   const year = date.year;
@@ -141,6 +145,24 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
   const [newProjectButton, setNewProjectButton] = useState(false);
   const [totals, setTotals] = useState({});
   const [employeeId, setEmployeeId] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [alertInfo, setAlertInfo] = useState({
+    severity: "",
+    message: "",
+  });
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const showAlert = (message, severity) => {
+    setAlertInfo({ severity, message });
+    setOpen(true);
+  };
 
   useEffect(() => {
     setTotals(calculateTotals(tableData));
@@ -202,6 +224,7 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
   }
 
   function handleSubmit() {
+    setLoading(true);
     const flattenedTableData = tableData.reduce(
       (acc, item) => acc.concat(item.dates),
       []
@@ -239,10 +262,12 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
         })
         .then((data) => {
           console.log("Connection successful:", data);
-          alert(JSON.stringify(data));
+          showAlert(data.Message, "success");
+          setLoading(false);
         })
         .catch((error) => {
-          console.error("Submission failed:", error);
+          showAlert(`Submission Failed : ${error}`, "error");
+          setLoading(false);
         });
 
       return newData;
@@ -250,7 +275,8 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
   }
 
   function handleDraftSave() {
-    console.log("Draft saved");
+    setLoading(true);
+    showAlert(`Draft Saved!`, "success");
     const flattenedTableData = tableData.reduce(
       (acc, item) => acc.concat(item.dates),
       []
@@ -286,10 +312,12 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
         })
         .then((data) => {
           console.log("Connection successful:", data);
-          alert(JSON.stringify(data));
+          showAlert(data.Message, "success");
+          setLoading(false);
         })
         .catch((error) => {
-          console.error("Submission failed:", error);
+          showAlert(`Submission Failed: ${error}`, "error");
+          setLoading(false);
         });
 
       return newData;
@@ -343,8 +371,16 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
 
   // RENDERING THE TABLE
   return (
-    <TableContainer component={Paper}>
-      {/* <div
+    <>
+      {loading && (
+        <Box
+          sx={{ display: "flex", justifyContent: "center", padding: "20px" }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
+      <TableContainer component={Paper}>
+        {/* <div
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -358,127 +394,142 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
         <NavigateNextIcon onClick={handleNextMonth} />
       </div> */}
 
-      <Table aria-label="Project Timesheet Table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Project ID</TableCell>
-            {tableData.length > 0 &&
-              tableData[0].dates.map((dateObj, index) => (
-                <TableCell
-                  key={index}
-                  align="right"
-                  sx={{ paddingRight: "14px" }}
-                >
-                  {formatDisplayDate(dateObj.WorkingDate)}
-                </TableCell>
-              ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tableData.map((project, projIndex) => (
-            <TableRow key={projIndex}>
-              <TableCell>
-                {project.projectId}{" "}
-                <CloseIcon
-                  fontSize="10px"
-                  sx={{ color: "red" }}
-                  onClick={() => handleDelete(projIndex)}
-                />
-              </TableCell>
-              {project.dates.map((dateObj, dateIndex) => (
-                <TableCell key={dateIndex} style={{ padding: "4px" }}>
-                  {dateObj.ApprovalStatus === "A" ? (
-                    <p
-                      style={{
-                        padding: "0 30px",
-                        color: dateObj.Hours !== 0 ? "#ff006e" : "inherit",
-                      }}
-                    >
-                      {dateObj.Hours}
-                    </p>
-                  ) : (
-                    <TextField
-                      sx={{
-                        padding: "0 20px",
-                        textAlign: "start",
-                        margin: "2px",
-                      }}
-                      type="number"
-                      value={dateObj.Hours}
-                      onChange={(e) =>
-                        handleChange(
-                          projIndex,
-                          dateIndex,
-                          parseInt(e.target.value, 10) || 0
-                        )
-                      }
-                      fullWidth
-                    />
-                  )}
-                </TableCell>
-              ))}
+        <Table aria-label="Project Timesheet Table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Project ID</TableCell>
+              {tableData.length > 0 &&
+                tableData[0].dates.map((dateObj, index) => (
+                  <TableCell
+                    key={index}
+                    align="right"
+                    sx={{ paddingRight: "14px" }}
+                  >
+                    {formatDisplayDate(dateObj.WorkingDate)}
+                  </TableCell>
+                ))}
             </TableRow>
-          ))}
-          <TableRow>
-            <TableCell style={{ fontWeight: "bold" }}>Total Hours</TableCell>
-            {tableData.length > 0 &&
-              tableData[0].dates.map((dateObj, index) => (
-                <TableCell
-                  key={index}
-                  style={{
-                    fontWeight: "bold",
-                    padding: "4px",
-                    textAlign: "center",
-                  }}
-                >
-                  {totals[dateObj.WorkingDate] || 0}
+          </TableHead>
+          <TableBody>
+            {tableData.map((project, projIndex) => (
+              <TableRow key={projIndex}>
+                <TableCell>
+                  {project.projectId}{" "}
+                  <CloseIcon
+                    fontSize="10px"
+                    sx={{ color: "red" }}
+                    onClick={() => handleDelete(projIndex)}
+                  />
                 </TableCell>
-              ))}
-          </TableRow>
-          <TableRow>
-            <Button
-              variant="outlined"
-              onClick={() => setNewProjectButton(true)}
-              sx={{
-                whiteSpace: "nowrap",
-                minWidth: "max-content",
-                marginTop: "15px",
-                marginLeft: "10px",
-              }}
-            >
-              Add Project
-            </Button>
-            {newProjectButton && (
-              <NewProjectPopUp
-                setNewProject={setNewProject}
-                setNewProjectButton={setNewProjectButton}
-              />
-            )}
-          </TableRow>
-        </TableBody>
-      </Table>
-      <div
-        style={{ display: "flex", justifyContent: "center", margin: "20px" }}
+                {project.dates.map((dateObj, dateIndex) => (
+                  <TableCell key={dateIndex} style={{ padding: "4px" }}>
+                    {dateObj.ApprovalStatus === "A" ? (
+                      <p
+                        style={{
+                          padding: "0 30px",
+                          color: dateObj.Hours !== 0 ? "#ff006e" : "inherit",
+                        }}
+                      >
+                        {dateObj.Hours}
+                      </p>
+                    ) : (
+                      <TextField
+                        sx={{
+                          padding: "0 20px",
+                          textAlign: "start",
+                          margin: "2px",
+                        }}
+                        type="number"
+                        value={dateObj.Hours}
+                        onChange={(e) =>
+                          handleChange(
+                            projIndex,
+                            dateIndex,
+                            parseInt(e.target.value, 10) || 0
+                          )
+                        }
+                        fullWidth
+                      />
+                    )}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+            <TableRow>
+              <TableCell style={{ fontWeight: "bold" }}>Total Hours</TableCell>
+              {tableData.length > 0 &&
+                tableData[0].dates.map((dateObj, index) => (
+                  <TableCell
+                    key={index}
+                    style={{
+                      fontWeight: "bold",
+                      padding: "4px",
+                      textAlign: "center",
+                    }}
+                  >
+                    {totals[dateObj.WorkingDate] || 0}
+                  </TableCell>
+                ))}
+            </TableRow>
+            <TableRow>
+              <Button
+                variant="outlined"
+                onClick={() => setNewProjectButton(true)}
+                sx={{
+                  whiteSpace: "nowrap",
+                  minWidth: "max-content",
+                  marginTop: "15px",
+                  marginLeft: "10px",
+                }}
+              >
+                Add Project
+              </Button>
+              {newProjectButton && (
+                <NewProjectPopUp
+                  setNewProject={setNewProject}
+                  setNewProjectButton={setNewProjectButton}
+                />
+              )}
+            </TableRow>
+          </TableBody>
+        </Table>
+        <div
+          style={{ display: "flex", justifyContent: "center", margin: "20px" }}
+        >
+          <Button variant="contained" onClick={handleSubmit}>
+            SUBMIT
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{ marginLeft: "20px" }}
+            onClick={handleDraftSave}
+          >
+            SAVE DRAFT
+          </Button>
+          <Button
+            variant="text"
+            sx={{ marginLeft: "20px", alignSelf: "flex-end" }}
+            onClick={() => setEmployeeId(postData.EmployeeId)}
+          >
+            COPY PREV RECORD
+          </Button>
+        </div>
+      </TableContainer>
+      <Snackbar
+        open={open}
+        autoHideDuration={10000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <Button variant="contained" onClick={handleSubmit}>
-          SUBMIT
-        </Button>
-        <Button
-          variant="outlined"
-          sx={{ marginLeft: "20px" }}
-          onClick={handleDraftSave}
+        <Alert
+          onClose={handleClose}
+          severity={alertInfo.severity}
+          sx={{ width: "100%" }}
         >
-          SAVE DRAFT
-        </Button>
-        <Button
-          variant="text"
-          sx={{ marginLeft: "20px", alignSelf: "flex-end" }}
-          onClick={() => setEmployeeId(postData.EmployeeId)}
-        >
-          COPY PREV RECORD
-        </Button>
-      </div>
-    </TableContainer>
+          {alertInfo.message}
+        </Alert>
+      </Snackbar>
+    </>
   );
 }
 
