@@ -1,10 +1,10 @@
-import Dashboard from "./components/Dashboard";
+import DashboardV3 from "./components/DashboardV3";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Dashboard />
+      <DashboardV3 />
     </>
   );
 }
