@@ -12,7 +12,7 @@ function MainHeader({onCreatePost}){
         <>
         <header className={styles.header}>
             
-            <img src={companyLogo} alt='coampnayLogo'></img>
+            <img src={companyLogo} alt='companyLogo'></img>
             <h1 className={styles.logo}>
                 Leave Application
             </h1>
