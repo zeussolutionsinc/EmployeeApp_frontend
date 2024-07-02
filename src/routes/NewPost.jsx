@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, Form, redirect } from 'react-router-dom';
 import styles from './NewPost.module.css';
-import Modal from '../components/Modal';
+import Modal from '../components/vacation/Modal';
 import axios from 'axios';
 
 function NewPost(){

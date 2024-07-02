@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import styles from '../MainHeader.module.css';
+import styles from '../vacation/MainHeader.module.css';
 import React from "react";
 
 export const SignupButton = () => {
@@ -8,7 +8,7 @@ export const SignupButton = () => {
   const handleSignUp = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: "/posts",
+        returnTo: "/signup",
       },
       authorizationParams: {
         screen_hint: "signup",

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import PostsList from '../components/PostsList';
+import PostsList from '../components/vacation/PostsList';
 import Sidebar from '../components/Sidebar';
 
 function Posts() {

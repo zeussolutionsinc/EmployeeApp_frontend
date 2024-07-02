@@ -1,9 +1,9 @@
 import { useLoaderData, Link } from 'react-router-dom';
 
-import Modal from '../components/Modal';
+import Modal from '../components/vacation/Modal';
 
 import styles from './PostDetails.module.css'
-import stylesPost from '../components/Post.module.css';
+import stylesPost from '../components/vacation/Post.module.css';
 
 function PostDetails(){
     const weeks = ['Mon','Tue', 'Wed', 'Thur', 'Fri', 'Sat','Sun']

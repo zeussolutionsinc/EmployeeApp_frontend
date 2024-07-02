@@ -7,7 +7,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Button from "@mui/material/Button";
 import GridV5 from "./GridV5";
 import { DateTime } from "luxon";
-
+import Sidebar from "../Sidebar";
+import "./DashboardV3.module.css"
 function getDate() {
   const today = DateTime.now(); // Get the current date and time
   const year = today.year;
@@ -349,35 +350,39 @@ export default function DashboardV3() {
   }
 
   return (
-    <div className="dashboard-layout">
-      <div className="infocard-flexbox">
-        {info.approvalStatus.map((infoItem, index) => (
-          <InfoCard key={index} info={{ approvalstatus: [infoItem] }} />
-        ))}
-        <InfoCard info={{ currentProjects: info.currentProjects }} />
+    <div className="timesheet-page" > <Sidebar/>
+      <div className="dashboard-layout">
+        <div className="infocard-flexbox">
+          {info.approvalStatus.map((infoItem, index) => (
+            <InfoCard key={index} info={{ approvalstatus: [infoItem] }} />
+          ))}
+          <InfoCard info={{ currentProjects: info.currentProjects }} />
+        </div>
+        <div className="timesheet">
+          <GridV5
+            setPostData={setPostData}
+            postData={postData}
+            setTableData={setTableData}
+            tableData={tableData}
+            // readOnly={readOnly}
+          />
+        </div>
+        <div className="previous-records-flexBox">
+          <Typography variant="body1" gutterBottom>
+            Previous Records
+          </Typography>
+          <Button onClick={togglePrevRecords}>
+            {showPrevRecords ? (
+              <KeyboardArrowUpIcon />
+            ) : (
+              <KeyboardArrowDownIcon />
+            )}
+          </Button>
+        </div>
+        {showPrevRecords && (
+          <PrevRecords setRecordSelected={setRecordSelected} />
+        )}
       </div>
-      <div className="timesheet">
-        <GridV5
-          setPostData={setPostData}
-          postData={postData}
-          setTableData={setTableData}
-          tableData={tableData}
-          // readOnly={readOnly}
-        />
-      </div>
-      <div className="previous-records-flexBox">
-        <Typography variant="body1" gutterBottom>
-          Previous Records
-        </Typography>
-        <Button onClick={togglePrevRecords}>
-          {showPrevRecords ? (
-            <KeyboardArrowUpIcon />
-          ) : (
-            <KeyboardArrowDownIcon />
-          )}
-        </Button>
-      </div>
-      {showPrevRecords && <PrevRecords setRecordSelected={setRecordSelected} />}
     </div>
   );
 }

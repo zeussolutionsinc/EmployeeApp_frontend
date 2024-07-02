@@ -1,24 +1,66 @@
-.sidebar{
-    position: absolute;
+.timesheet-page {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #4b2e83;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 15%;
+    height: 80%;
     display: flex;
     flex-direction: column;
-    margin-left: 3rem;
-    padding: 1rem;
-}
-.sidebaritem{
-    align-self: auto
-}
-.sidebaritem>a{
+    justify-content: space-between;
+    /* padding-top: 20px; */
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-hidden {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar .sidebaritem {
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 20px; */
+  }
+  
+  .sidebar .sidebaritem a {
+    color: #fff;
     text-decoration: none;
-}
-.h1 {
-    padding: 1rem;
-    border-radius: 10px;
-}
-.h1:hover{
-    background-color: #a990fb;
+    padding: 10px 0;
+    text-indent: 10%;
+    font-size: 12px;
+  }
+  
+  .sidebar .sidebaritem a:hover {
+    background-color: #6a4c93;
+    border-radius: 5px;
+  }
+  
+  .sidebar .sidebaritem a.active {
+    background-color: #3c28af;
+    border-radius: 5px;
+  }
+  
+  .sidebar-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #4b2e83;
+    color: #fff;
+    border: none;
+    padding: 10px;
     cursor: pointer;
-}
-.selected{
-    background-color: #e1daf8;
-}
+  }
+  
+
+  .logoutButtonWrapper {
+    margin-top: auto; /* This pushes the logout button to the bottom */
+    padding: 20px;
+  }

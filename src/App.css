@@ -1,14 +1,21 @@
 /* Root element styling */
-  
+
   /* Dashboard layout styling */
   .dashboard-layout {
     background-color: #f0f0f0;
-    width: 90vw;
+    width: 70vw;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    margin-left: 250px;
+    display: flex;
+    transition: margin-left 0.3s ease-in-out;
+  }
+
+  .timesheet-page.sidebar-open .dashboard-layout {
+    margin-left: 250px; /* Adjust content when sidebar is open */
   }
   
   /* .table-heading-flex{
@@ -33,7 +40,7 @@
     background-color: #f0f0f0;
     color: black;
     margin: 10px;
-    width: 90vw;
+    width: 70vw;
   }
   
   .infocard {
@@ -50,7 +57,7 @@
   
   .timesheet {
     height: 450px;
-    width: 90vw;
+    width: 70vw;
     background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ddd;
@@ -65,12 +72,12 @@
     background-color: #f0f0f0;
     color: black;
     margin: 10px;
-    width: 90vw;
+    width: 70vw;
     gap : 15px;
   }
   
   .prev-records {
-    width: 90vw;
+    width: 120vw;
     height: 100px;
     color: black;
     background-color: #f0f0f0;
@@ -79,3 +86,46 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     align-items: start;
   }
+
+  .errors {
+    color: red;
+  }
+
+  /* .form-container {
+  /* margin: 2px auto; */
+    /* border-top: 1px solid #dc3333; */
+ 
+    /* Red border */
+    /* padding: 2px; */
+    /* Padding inside the border */
+ 
+.header-ribbon {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+ 
+  /* justify-content: space-between; */
+  /* background-color: #dc3333; */
+  width: 100%;
+  padding: 1vh 20px;
+}
+ 
+.logo {
+  height: 5vh;
+  margin-left: 1vh;
+}
+ 
+.title {
+  flex-grow: 0.8;
+  margin-top : px;
+  text-align: center;
+}
+ 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2px auto;
+}
+ 

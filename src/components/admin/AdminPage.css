@@ -1,0 +1,463 @@
+/* 
+body, html {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  overflow-x: hidden; 
+} */
+
+/* #root {
+  width: 80vw;
+} */
+
+
+.grid-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .filter-box {
+    width: 20%;
+    margin-right: 10px; /* Adjust margin as needed */
+  }
+  
+  .grid-content {
+    width: 80%;
+    transition: width 0.5s; /* Smooth transition */
+  }
+  
+  .grid-container .filter-box {
+    display: none;
+  }
+  
+  .grid-container.with-filter .filter-box {
+    display: block;
+  }
+  
+  .grid-container.with-filter .grid-content {
+    width: 80%; /* Set grid width to 80% when filter is active */
+  }
+  
+  .user-list {
+    width: 40%; /* Adjust width to show minimized user list */
+    transition: width 0.5s; /* Smooth transition */
+  }
+  
+  .timesheet-details {
+    width: 60%; /* Adjust width for timesheet details */
+    transition: width 0.5s; /* Smooth transition */
+  }
+  
+  .hidden {
+    display: none; /* Hide element */
+  }
+  
+  .slide-in {
+    animation: slideIn 0.5s forwards; /* Slide-in animation */
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .ag-theme-alpine .ag-row-selected {
+    background-color: #c8e6c9 !important;
+  }
+  .ag-theme-alpine .ag-cell-focus {
+    background-color:  #f5fffa   !important;
+    border: 1px solid black !important;
+  } 
+  
+  .ag-theme-alpine .ag-cell-focus .ag-cell-value {
+    color: #000000 !important; /* Optional: Change text color if needed */
+  }
+  
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-y: auto;
+  }
+  
+  
+  
+  .child-grid-container {
+    width: calc(80vw);
+    margin-top: 20px;
+  }
+  
+  
+  .tab-panel-container {
+    overflow-x: auto; /* Add this line */
+  }
+  
+  .tab-panel {
+    overflow-x: auto; /* Add this line */
+  }
+  
+  .ag-theme-alpine .ag-body-viewport {
+    overflow-x: scroll !important;
+  }
+  
+  
+  .ag-center-cols-viewport{
+    
+    width: 80vw;
+  }
+  .ag-grid-container {
+    width: 100%; /* Set width to fit the container */
+    margin-top: 0; /* Ensure no margin at the top */
+  }
+  
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    /* position: fixed; */
+  }
+  
+  .tab {
+    border: solid 1px #28c733;
+    text-transform: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 5px; /* Add some margin to space out the tabs */
+    min-height: 48px; /* Ensure the tabs are tall enough */
+    border-radius: 4px; /* Add rounded corners */
+  }
+  
+  .MuiTab-root.Mui-selected {
+    border: solid 1px #1976d2;
+    color: #ffffff !important;
+    background-color: #1057ba; /* Optional: Change background color for the selected tab */
+  }
+  
+  .MuiTabs-indicator {
+    display: none; /* Hide the default indicator */
+  }
+  
+  .button-grid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-custom {
+    margin-top: 5px;
+    background-color:  #1057ba; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 5px 10px; /* Some padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Get it to display inline */
+    font-size: 10px; /* Increase font size */
+    margin-left: 10px; /* Some margin */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 12px; /* Rounded corners */
+  }
+  
+  .button-custom2 {
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1057ba; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 5px 15px; /* Some padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Get it to display inline */
+    font-size: 10px; /* Increase font size */
+    margin-left: 20px; /* Some margin */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 12px; /* Rounded corners */
+  }
+  
+  .button-custom-clicked{
+    background-color: #45a049; 
+  }
+  
+  .button-custom2-clicked{
+    background-color: #45a049; 
+  }
+  
+  .button-custom:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .button-custom2:hover {
+    background-color: #ba1919; /* Darker green on hover */
+  }
+  
+  /* For Firefox */
+  .ag-theme-alpine {
+    
+    scrollbar-width:initial;
+    scrollbar-color: #1057ba #f1f1f1;
+    /* --ag-row-height: 30px; */
+    /* --ag-grid-size: 5px; */
+  }
+  
+  /* App.css */
+  .max-height-grid {
+    min-height: 400px;
+    max-height: 400px; /* Set your desired max height */
+    overflow: auto; /* Ensure content within the grid is scrollable */
+  }
+  
+  .header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%; /* Ensure it takes the full height of the header */
+  }
+  
+  .ag-header-cell-label {
+    justify-content: center;
+  }
+  
+  .ag-cell {
+    text-align: center;
+  }
+  
+  .ag-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ag-selection-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ag-header-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ag-header-cell .ag-checkbox-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-below-grid{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    gap: 50px;
+  }
+  
+  .button-below-grid .button-reject {
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1057ba !important; /* Blue background */
+    border: none !important; /* Remove borders */
+    color: white !important; /* White text */
+    padding: 5px 15px !important; /* Some padding */
+    text-align: center !important; /* Center the text */
+    text-decoration: none !important; /* Remove underline */
+    display: inline-block !important; /* Get it to display inline */
+    font-size: 15px !important; /* Increase font size */
+    margin-left: 20px !important; /* Some margin */
+    cursor: pointer !important; /* Pointer/hand icon on hover */
+    border-radius: 22px !important; /* Rounded corners */
+  }
+  
+  .button-below-grid .button-approve {
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: #1057ba !important; /* Blue background */
+    border: none !important; /* Remove borders */
+    color: white !important; /* White text */
+    padding: 5px 15px !important; /* Some padding */
+    text-align: center !important; /* Center the text */
+    text-decoration: none !important; /* Remove underline */
+    display: inline-block !important; /* Get it to display inline */
+    font-size: 15px !important; /* Increase font size */
+    margin-left: 20px !important; /* Some margin */
+    cursor: pointer !important; /* Pointer/hand icon on hover */
+    border-radius: 22px !important; /* Rounded corners */
+  }
+  
+  .button-below-grid .button-reject:hover {
+    background-color: #ba1919 !important;
+    color: white !important;
+  }
+  
+  .button-below-grid .button-approve:hover {
+    background-color: #45a049 !important;
+    color: white !important;
+  }
+  
+  .ag-theme-alpine .ag-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: white;
+  }
+  
+  .available-months {
+    margin-top: 10px;
+    font-size: 14px;
+    border: #c8bfbf solid 1px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  
+  .available-months h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+    
+  }
+  
+  .months-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  
+  .back-button {
+    margin: 1rem;
+  }
+  
+  .month-button {
+    margin-bottom: 10px;
+    margin: 5px 0;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .month-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .slide-in {
+    transform: translateX(0);
+  }
+  
+  .slide-out {
+    transform: translateX(100%);
+  }
+  
+  .filter-status{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .data-above-grid{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    /* gap: 20vw; */
+    font-size: 12px;
+    margin-right: 50px;
+    margin-bottom: -10px;
+    
+  }
+  
+  .employee-list-container {
+    /* position: absolute; */
+    height: 60vh;
+    overflow-y: auto;
+    width: calc(35vw);
+    transition: width 0.3s;
+  }
+  
+  .employee-grid {
+    /* position: fixed; */
+    flex: 0 1 auto; /* Allows the grid to take its natural width */
+  }
+  
+  .ag-tooltip {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .approve-button,
+  .reject-button {
+    margin-top: 3px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff !important; /* Blue background */
+    border: none !important; /* Remove borders */
+    color: white !important; /* White text */
+    padding: 3px 10px !important; /* Reduced padding */
+    text-align: center !important; /* Center the text */
+    text-decoration: none !important; /* Remove underline */
+    display: inline-block !important; /* Get it to display inline */
+    font-size: 12px !important; /* Smaller font size */
+    margin-left: 5px !important; /* Some margin */
+    cursor: pointer !important; /* Pointer/hand icon on hover */
+    border-radius: 12px !important; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .approve-button:hover {
+    background-color: green !important;
+    color: #fff !important;
+  }
+  
+  .reject-button:hover {
+    background-color: #ba1919 !important;
+    color: #fff !important;
+  }
+  
+  .resume-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .resume-icon {
+    width: 20px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+  }
+  

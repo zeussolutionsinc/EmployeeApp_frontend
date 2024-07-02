@@ -10,6 +10,7 @@ export default function PrevRecords({ setRecordSelected }) {
       headerName: "Record ID",
       sortable: true,
       filter: true,
+      maxWidth: 140
     },
     {
       field: "SubmissionDate",
@@ -78,7 +79,7 @@ export default function PrevRecords({ setRecordSelected }) {
 
   const autoSizeStrategy = { type: "fitGridWidth" };
   return (
-    <div className="ag-theme-material" style={{ height: 320, width: 1100 }}>
+    <div className="ag-theme-material" style={{ height: 320, width: '70vw' }}>
       <AgGridReact
         rowData={backendRecords}
         columnDefs={colDefs}
