@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-// import FormLabel from "@mui/material/FormLabel";
 import CustomTextField from "./CustomTextField";
 import * as Yup from "yup";
 import Alert from "@mui/material/Alert";
@@ -42,18 +41,6 @@ const validationSchema = Yup.object({
     ),
 });
  
- 
-// const validationSchema = Yup.object({
-//   emailId: Yup.string()
-//     .matches(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, "Invalid email format")
-//     .required("Email is required"),
- 
-//   passportNumber: Yup.string().required("Passport number is required"),
-//   registrationNumber: Yup.string()
-//     .required("Registration Number is required")
-//     .min(5, "Must be exactly 5 digits")
-//     .max(5, "Must be exactly 5 digits"),
-// });
  
 export default function GetH1bForm({ setFieldsDisabled, onDataRetrieved }) {
   const [formData, setFormData] = useState(formFields);

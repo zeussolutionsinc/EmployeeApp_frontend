@@ -1,20 +1,4 @@
-/* 
-body, html {
-  margin: 0;
-  padding: 0;
-  height: auto;
-  width: 100%;
-  background-color: white;
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  overflow-x: hidden; 
-} */
 
-/* #root {
-  width: 80vw;
-} */
 
 
 .grid-container {

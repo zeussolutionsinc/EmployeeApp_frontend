@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Typography from "@mui/material/Typography";
-// import ZeusLogo from "../../zeus_logo.png";
-// import GetH1bForm from "./GetH1bForm";
 import SetH1bV3 from "./SetH1bV3";
 import Sidebar from "../Sidebar";
 import { useAuth0 } from "@auth0/auth0-react";

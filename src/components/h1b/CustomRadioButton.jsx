@@ -32,7 +32,6 @@ const CustomRadioGroup = ({ legend, name, value, options, onChange }) => {
                 control={<Radio sx={radioStyles} />}
                 label={option.label}
               />
-              {/* Inserting a spacer after each item except the last */}
               {index !== array.length - 1 && <Box sx={{ flex: 1 }} />}
             </React.Fragment>
           ))}

@@ -12,10 +12,7 @@ import {
 } from "@mui/material";
 import NewProjectPopUp from "./NewProjectPopUp";
 import CloseIcon from "@mui/icons-material/Close";
-// import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-// import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { DateTime } from "luxon";
-// import { json } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import CircularProgress from "@mui/material/CircularProgress";

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import Tabs from "@mui/material/Tabs";
+import React, { useState, useEffect, useRef } from "react"
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import TabContext from "@mui/lab/TabContext";
@@ -11,7 +10,6 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import "./AdminPage.css";
 import Sidebar from "../Sidebar";
 import { Button } from "@mui/material";
-import FilterBox from "./FilterBox"; // Import the custom filter component
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -648,97 +646,7 @@ const AdminPage = () => {
     { headerName: "Start Hours", field: "Starthours", maxWidth: 120 },
   ];
 
-  // const vacationColumnDefs = [
-  //   {
-  //     headerCheckboxSelection: true,
-  //     checkboxSelection: true,
-  //     maxWidth: 50,
-  //   },
-  //   {
-  //     headerName: "",
-  //     field: "approve",
-  //     pinned: "left",
-  //     cellClass: "bold-cell",
-  //     maxWidth: 50,
-  //     cellRenderer: (params) => {
-  //       return (
-  //         <div
-  //           style={{
-  //             display: "flex",
-  //             justifyContent: "center",
-  //             alignItems: "center",
-  //             gap: 15,
-  //           }}
-  //         >
-  //           <button
-  //             className="approve-button"
-  //             onClick={() => handleApproveVacation(params.data)}
-  //           >
-  //             <span role="img" aria-label="approve">
-  //               ✅
-  //             </span>
-  //           </button>
-  //         </div>
-  //       );
-  //     },
-  //   },
-  //   {
-  //     headerName: "",
-  //     field: "reject",
-  //     pinned: "left",
-  //     cellClass: "bold-cell",
-  //     maxWidth: 50,
-  //     cellRenderer: (params) => {
-  //       return (
-  //         <div
-  //           style={{
-  //             display: "flex",
-  //             justifyContent: "center",
-  //             alignItems: "center",
-  //             gap: 15,
-  //           }}
-  //         >
-  //           <button
-  //             className="reject-button"
-  //             onClick={() => handleRejectVacation(params.data)}
-  //           >
-  //             <span role="img" aria-label="reject">
-  //               ❌
-  //             </span>
-  //           </button>
-  //         </div>
-  //       );
-  //     },
-  //   },
-  //   { headerName: "ID", field: "Id", maxWidth: 50 },
-  //   // { headerName: "Auth ID", field: "AuthId", maxWidth: 100 },
-  //   { headerName: "Email", field: "Email", maxWidth: 150 },
-  //   { headerName: "Name", field: "Name", maxWidth: 150 },
-  //   // { headerName: "Is Complete", field: "IsComplete", maxWidth: 100 },
-  //   { headerName: "Body", field: "Body", maxWidth: 250 },
-  //   // { headerName: "Secret", field: "Secret", maxWidth: 150 },
-  //   {
-  //     headerName: "Vacation Start Date",
-  //     field: "VacationStartdate",
-  //     maxWidth: 170,
-  //   },
-  //   {
-  //     headerName: "Vacation End Date",
-  //     field: "VacationEnddate",
-  //     maxWidth: 150,
-  //   },
-  //   {
-  //     headerName: "Approved Status",
-  //     field: "ApprovalStatus",
-  //     maxWidth: 100,
-  //   },
-  //   //  { headerName: "Is Manager", field: "isManager", maxWidth: 100 },
-  //   { headerName: "Image URL", field: "ImageUrl", maxWidth: 200 },
-  //   //{ headerName: "Agree", field: "agree", maxWidth: 80 },
-  //   // { headerName: "File Upload", field: "fileupload", maxWidth: 150 },
-  //   { headerName: "End Hours", field: "Endhours", maxWidth: 100 },
-  //   { headerName: "Start Hours", field: "Starthours", maxWidth: 120 },
-  // ];
+  
 
   useEffect(() => {
     fetchData(
@@ -965,12 +873,9 @@ const AdminPage = () => {
         },
       },
       { headerName: "ID", field: "Id", maxWidth: 50 },
-      // { headerName: "Auth ID", field: "AuthId", maxWidth: 100 },
       { headerName: "Email", field: "Email", maxWidth: 150 },
       { headerName: "Name", field: "Name", maxWidth: 150 },
-      // { headerName: "Is Complete", field: "IsComplete", maxWidth: 100 },
       { headerName: "Body", field: "Body", maxWidth: 250 },
-      // { headerName: "Secret", field: "Secret", maxWidth: 150 },
       {
         headerName: "Vacation Start Date",
         field: "VacationStartdate",
@@ -1068,10 +973,6 @@ const AdminPage = () => {
       setSelectedEmployee(null);
       setAvailableMonths([]);
     }
-    // seteid(selectedEmployeeData.EmployeeId);
-    ////console.log("Selected Info:", selectedNodes);
-    // console.log("Selected Employee:", selectedEmployeeData); // Log selected employee data
-    ////console.log("Employee Info:", employeesData); // Log employees data for debugging
   };
 
 
@@ -1084,13 +985,8 @@ const AdminPage = () => {
       );
       console.log("Params:", params.data.EmployeeId);
       if (statusKey) {
-        // ////console.log(`${statusKey} - ${params.data.Name}`);
-        // setsk(statusKey);
-        // console.log("Setting: ", statusKey);
         seteid(params.data.EmployeeId);
         setsk(statusKey); 
-        // console.log(eid);
-        // console.log("EID", params.data.EmployeeId);
         fetchTimesheetDataByStatus(params.data.EmployeeId, statusKey);
       }
     }
@@ -1272,9 +1168,6 @@ const isSubmitted = (status) => {
 
   const checkDateInRange = (date, recordStartDate, tsFreq) => {
     if (!recordStartDate) return false; // Ensure recordStartDate is valid
-
-    //console.log("Dated:", date);
-    //console.log("RecordDate:", recordStartDate);
 
     if (tsFreq === "W") {
         const startDate = getSunday(recordStartDate);
