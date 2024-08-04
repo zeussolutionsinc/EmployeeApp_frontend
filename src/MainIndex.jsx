@@ -1,6 +1,6 @@
 import React from 'react';
-import { useEffect, useNavigate } from 'react';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements,  } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useNavigate  } from 'react-router-dom';
 import './index.css';
 import "./App.css";
 import Posts, { loader as postsLoader } from './routes/Posts';
