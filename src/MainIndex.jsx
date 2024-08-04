@@ -1,6 +1,6 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, useNavigate  } from 'react-router-dom';
+// import { useEffect } from 'react';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements  } from 'react-router-dom';
 import './index.css';
 import "./App.css";
 import Posts, { loader as postsLoader } from './routes/Posts';
@@ -13,35 +13,35 @@ import RootLayout from './routes/RootLayout';
 import H1bLanding from './components/h1b/H1bLandingPage';
 import DashboardV3 from "./components/timesheet/DashboardV3";
 import AdminPage from './components/admin/AdminPage'
-import Employee_signup, { action as employeeSignupAction } from './components/singup/employee_signup'
+import EmployeeSignup, { action as employeeSignupAction } from './components/singup/employee_signup'
 import HomePage from './pages/HomePage';
 import SuperAdmin from './components/SuperAdmin';
-import { AuthProvider, AuthContext } from './AuthContext';
+import { AuthProvider} from './AuthContext';
 
 
-// Function to check if the user is authenticated
-const isAuthenticated = () => {
-  return localStorage.getItem('isAuthenticated') === 'true';
-};
+// // Function to check if the user is authenticated
+// const isAuthenticated = () => {
+//   return localStorage.getItem('isAuthenticated') === 'true';
+// };
 
 // AuthGuard component to protect routes
-const AuthGuard = ({ children }) => {
-  const navigate = useNavigate();
+// const AuthGuard = ({ children }) => {
+//   const navigate = useNavigate();
 
-  useEffect(() => {
-      if (!isAuthenticated()) {
-          navigate('/'); // Redirect to landing page if not authenticated
-      }
-  }, [navigate]);
+//   useEffect(() => {
+//       if (!isAuthenticated()) {
+//           navigate('/'); // Redirect to landing page if not authenticated
+//       }
+//   }, [navigate]);
 
-  return isAuthenticated() ? children : null;
-};
+//   return isAuthenticated() ? children : null;
+// };
 
 const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Auth0ProviderWithNavigate />} >
         <Route path='/' element={<RootLayout />}>
-        <Route path="/signup" element={<Employee_signup />} action={employeeSignupAction} />
+        <Route path="/signup" element={<EmployeeSignup />} action={employeeSignupAction} />
           <Route path='/home' element={<AuthenticationGuard component={HomePage} />} />  {/* Protected HomePage route */}
           <Route path='/posts' element={<AuthenticationGuard component={Posts} />} loader={postsLoader}>
             <Route path='create-post' element={<AuthenticationGuard component={NewPost} />} action={newPostAction}></Route>

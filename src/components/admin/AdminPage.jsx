@@ -38,7 +38,7 @@ const monthNames = [
   "December",
 ];
 
-const sasToken = 'sp=racw&st=2024-08-04T03:04:55Z&se=2025-09-24T11:04:55Z&spr=https&sv=2022-11-02&sr=c&sig=jtyIOzSd5pa51YCPL690XfD0PmrZcWcQgOkrrz488r4%3D';
+// const sasToken = 'sp=racw&st=2024-08-04T03:04:55Z&se=2025-09-24T11:04:55Z&spr=https&sv=2022-11-02&sr=c&sig=jtyIOzSd5pa51YCPL690XfD0PmrZcWcQgOkrrz488r4%3D';
 
 
 const AdminPage = () => {
@@ -52,30 +52,30 @@ const AdminPage = () => {
   const [filteredTimesheetData, setFilteredTimesheetData] = useState([]);
   const [timesheetColumns, setTimesheetColumns] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-  const [statuses, setStatuses] = useState({
-    pending: false,
-    rejected: false,
-    submitted: false,
-    approved: false,
-  });
-  const [availableMonths, setAvailableMonths] = useState([]);
+  // const [statuses, setStatuses] = useState({
+  //   pending: false,
+  //   rejected: false,
+  //   submitted: false,
+  //   approved: false,
+  // });
+  // const [availableMonths, setAvailableMonths] = useState([]);
   const [employeesData, setEmployeesData] = useState([]);
-  const [isMonthSelected, setIsMonthSelected] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(null);
-  const [selectedYear, setSelectedYear] = useState(null);
+  // const [isMonthSelected, setIsMonthSelected] = useState(false);
+  // const [selectedMonth, setSelectedMonth] = useState(null);
+  // const [selectedYear, setSelectedYear] = useState(null);
   const [childGridData, setChildGridData] = useState([]);
   const [childGridColumns, setChildGridColumns] = useState([]);
-  const [resumeUrl, setResumeUrl] = useState("");
-  const [showResumePopup, setShowResumePopup] = useState(false);
-  const [selectedRows, setSelectedRows] = useState([]);
+  // const [resumeUrl, setResumeUrl] = useState("");
+  // const [showResumePopup, setShowResumePopup] = useState(false);
+  // const [selectedRows, setSelectedRows] = useState([]);
   const [gridApi, setGridApi] = useState(null);
   const [open, setOpen] = useState(false);
   const[sk, setsk] = useState();
   const[eid, seteid] = useState();
-  const [gridColumnApi, setGridColumnApi] = useState(null);
+  // const [gridColumnApi, setGridColumnApi] = useState(null);
   const { user } = useAuth0();
   const authId = user.sub.substring(6);
-  const [refreshKey, setRefreshKey] = useState(0);
+  // const [refreshKey, setRefreshKey] = useState(0);
   const sasToken = 'sp=racw&st=2024-08-04T03:04:55Z&se=2025-09-24T11:04:55Z&spr=https&sv=2022-11-02&sr=c&sig=jtyIOzSd5pa51YCPL690XfD0PmrZcWcQgOkrrz488r4%3D';
   
   const [alertInfo, setAlertInfo] = useState({
@@ -99,38 +99,25 @@ const AdminPage = () => {
 
 
 
-  const [newRecruitsData] = useState([
-    { name: "Alice Brown", position: "Developer", startDate: "2024-05-15" },
-    { name: "Bob Green", position: "Designer", startDate: "2024-06-01" },
-    { name: "Charlie White", position: "Manager", startDate: "2024-07-01" },
-  ]);
-  const [newRecruitsColumns] = useState([
-    { headerName: "Name", field: "name", headerClass: "header-center" },
-    { headerName: "Position", field: "position", headerClass: "header-center" },
-    {
-      headerName: "Start Date",
-      field: "startDate",
-      headerClass: "header-center",
-    },
-  ]);
 
-  const gridOptions = {
-    onColumnResized: (params) => {
-      ////console.log(params);
-    },
-    autoSizeStrategy: {
-      type: "fitGridWidth",
-    },
-  };
+
+  // const gridOptions = {
+  //   onColumnResized: (params) => {
+  //     ////console.log(params);
+  //   },
+  //   autoSizeStrategy: {
+  //     type: "fitGridWidth",
+  //   },
+  // };
   const onGridReady = (params) => {
     setGridApi(params.api);
-    setGridColumnApi(params.columnApi);
+    // setGridColumnApi(params.columnApi);
     headerHeightSetter(params.api);
   };
 
-  const handleSelectionChange = (params) => {
-    setSelectedRows(params.api.getSelectedRows());
-  };
+  // const handleSelectionChange = (params) => {
+  //   setSelectedRows(params.api.getSelectedRows());
+  // };
 
   const handleBulkApprove = async () => {
     const selectedRows = gridApi.getSelectedRows();
@@ -240,16 +227,16 @@ const AdminPage = () => {
     }
   };
 
-  const handleResumeClick = (resumeUrl) => {
-    const urlParts = resumeUrl.split("?")[0]; // Remove query parameters
-    const fileName = urlParts.substring(urlParts.lastIndexOf("/") + 1); // Extract the file name
-    const fullUrl = `/api/AdminH1b/resume/${fileName}`;
-    window.location.href = fullUrl;
-  };
+  // const handleResumeClick = (resumeUrl) => {
+  //   const urlParts = resumeUrl.split("?")[0]; // Remove query parameters
+  //   const fileName = urlParts.substring(urlParts.lastIndexOf("/") + 1); // Extract the file name
+  //   const fullUrl = `/api/AdminH1b/resume/${fileName}`;
+  //   window.location.href = fullUrl;
+  // };
 
-  useEffect(() => {}, [resumeUrl]);
+  // useEffect(() => {}, [resumeUrl]);
 
-  useEffect(() => {}, [showResumePopup]);
+  // useEffect(() => {}, [showResumePopup]);
 
   const fetchEmployeesData = async () => {
     try {
@@ -796,7 +783,7 @@ const AdminPage = () => {
           return (
             <button
               className="resume-button"
-              onClick={() => handleResumeClick(params.data.resume)}
+              // onClick={() => handleResumeClick(params.data.resume)}
             >
               <img
                 src='./resume.png'
@@ -910,19 +897,19 @@ const AdminPage = () => {
 
   useEffect(() => {
     // Reset state when the tab changes
-    setIsMonthSelected(false);
+    // setIsMonthSelected(false);
     setSelectedEmployee(null); // Clear the selected employee
     setFilteredTimesheetData([]); // Clear the timesheet data
     setTimesheetColumns([]); // Clear the columns
-    setAvailableMonths([]); // Clear available months
+    // setAvailableMonths([]); // Clear available months
     setChildGridData([]); // Clear child grid data
     setChildGridColumns([]); // Clear child grid columns
-    setStatuses({
-      pending: false,
-      rejected: false,
-      submitted: false,
-      approved: false,
-    });
+    // setStatuses({
+    //   pending: false,
+    //   rejected: false,
+    //   submitted: false,
+    //   approved: false,
+    // });
     fetchData(
       "/api/AdminEmpTimesheet",
       setTimesheetData,
@@ -935,15 +922,15 @@ const AdminPage = () => {
     setValue(newValue);
   };
 
-  const handleStatusChange = (status) => {
-    setStatuses((prevStatuses) => {
-      const updatedStatuses = {
-        ...prevStatuses,
-        [status]: !prevStatuses[status],
-      };
-      return updatedStatuses;
-    });
-  };
+  // const handleStatusChange = (status) => {
+  //   setStatuses((prevStatuses) => {
+  //     const updatedStatuses = {
+  //       ...prevStatuses,
+  //       [status]: !prevStatuses[status],
+  //     };
+  //     return updatedStatuses;
+  //   });
+  // };
 
   const onSelectionChanged = () => {
     const selectedNodes = gridRef.current.api.getSelectedNodes();
@@ -963,15 +950,15 @@ const AdminPage = () => {
           EmployeeName: selectedEmployeeData.EmployeeName || "Unknown",
           // seteid(selectedEmployeeData.employeeId);
         });
-        setAvailableMonths(employeeInfo.Months);
+        // setAvailableMonths(employeeInfo.Months);
         // seteid(selectedEmployeeData.EmployeeId);
       } else {
         setSelectedEmployee(null);
-        setAvailableMonths([]);
+        // setAvailableMonths([]);
       }
     } else {
       setSelectedEmployee(null);
-      setAvailableMonths([]);
+      // setAvailableMonths([]);
     }
   };
 
@@ -1092,53 +1079,53 @@ const isSubmitted = (status) => {
 };
 
 
-  const fetchTimesheetDataForMonth = async (year, month) => {
-    const startDate = `${year}-${month.toString().padStart(2, "0")}-01`;
-    const endDate = new Date(year, month, 0);
-    const formattedEndDate = `${year}-${month
-      .toString()
-      .padStart(2, "0")}-${endDate.getDate().toString().padStart(2, "0")}`;
+  // const fetchTimesheetDataForMonth = async (year, month) => {
+  //   const startDate = `${year}-${month.toString().padStart(2, "0")}-01`;
+  //   const endDate = new Date(year, month, 0);
+  //   const formattedEndDate = `${year}-${month
+  //     .toString()
+  //     .padStart(2, "0")}-${endDate.getDate().toString().padStart(2, "0")}`;
 
-    try {
-      const response = await fetch(
-        `/api/AdminTimeSheet/${selectedEmployee.EmployeeId}/dateRange?startDate=${startDate}&endDate=${formattedEndDate}`,
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          mode: "cors",
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const json = await response.json();
-      //console.log("TS ENTRY:", json);
-      console.log("EMPID INITIAL:", selectedEmployee.EmployeeId, year, month);
-      processChildGridData(
-        json,
-        year,
-        month,
-        endDate.getDate(),
-        selectedEmployee.EmployeeId
-      );
-      setIsMonthSelected(true);
-      setSelectedMonth(monthNames[month - 1]);
-      setSelectedYear(year);
-    } catch (error) {
-      console.error("There was a problem with your fetch operation:", error);
-      console.log("EMPID INITIAL:", selectedEmployee.EmployeeId, year, month);
-      processChildGridData(
-        [],
-        year,
-        month,
-        endDate.getDate(),
-        selectedEmployee.EmployeeId
-      );
-    }
-  };
+  //   try {
+  //     const response = await fetch(
+  //       `/api/AdminTimeSheet/${selectedEmployee.EmployeeId}/dateRange?startDate=${startDate}&endDate=${formattedEndDate}`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //         mode: "cors",
+  //       }
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const json = await response.json();
+  //     //console.log("TS ENTRY:", json);
+  //     console.log("EMPID INITIAL:", selectedEmployee.EmployeeId, year, month);
+  //     processChildGridData(
+  //       json,
+  //       year,
+  //       month,
+  //       endDate.getDate(),
+  //       selectedEmployee.EmployeeId
+  //     );
+  //     // setIsMonthSelected(true);
+  //     setSelectedMonth(monthNames[month - 1]);
+  //     setSelectedYear(year);
+  //   } catch (error) {
+  //     console.error("There was a problem with your fetch operation:", error);
+  //     console.log("EMPID INITIAL:", selectedEmployee.EmployeeId, year, month);
+  //     processChildGridData(
+  //       [],
+  //       year,
+  //       month,
+  //       endDate.getDate(),
+  //       selectedEmployee.EmployeeId
+  //     );
+  //   }
+  // };
 
   const getDaysInMonth = (year, month) => {
     return new Date(year, month, 0).getDate();
@@ -1199,7 +1186,7 @@ const getSunday = (d) => {
 
 const handleTimesheetApprove = async (data) => {
   console.log("ApproveData:", data);
-  const { EmployeeId, RecordNumber, ProjectId, WorkingDate, Hours } = data;
+  const { RecordNumber } = data;
   console.log("Apprinvg for:", eid);
   const payload = {
       RecordNumber : RecordNumber,
@@ -1234,7 +1221,7 @@ const handleTimesheetApprove = async (data) => {
 
 const handleTimesheetReject = async (data) => {
   console.log("RejectData:", data);
-  const { EmployeeId, RecordNumber, ProjectId, WorkingDate, Hours } = data;
+  const { RecordNumber } = data;
   const payload = {
     RecordNumber : RecordNumber,
     EmployeeId : eid
@@ -1256,7 +1243,7 @@ const handleTimesheetReject = async (data) => {
         // console.log("sk: ", sk);
         fetchTimesheetDataByStatus(eid, 'S');
 
-        setRefreshKey(oldKey => oldKey + 1); // Trigger re-render
+        // setRefreshKey(oldKey => oldKey + 1); // Trigger re-render
           // Update the grid data or state as needed
       } else {
         showAlert("Failed to update status", "failure");
@@ -1505,12 +1492,12 @@ const processChildGridData = async (data, year = null, month = null, daysInMonth
     
   ]
   
-  const rowClassRules = {
-    'approval-status-a': 'data.ApprovalStatus === "A"',
-    'approval-status-p': 'data.ApprovalStatus === "P"',
-    'approval-status-r': 'data.ApprovalStatus === "R"',
-    'approval-status-s': 'data.ApprovalStatus === "S"',
-  };
+  // const rowClassRules = {
+  //   'approval-status-a': 'data.ApprovalStatus === "A"',
+  //   'approval-status-p': 'data.ApprovalStatus === "P"',
+  //   'approval-status-r': 'data.ApprovalStatus === "R"',
+  //   'approval-status-s': 'data.ApprovalStatus === "S"',
+  // };
 
   console.log("transformed:", transformedData);
   setChildGridData(transformedData);
@@ -1520,44 +1507,44 @@ const processChildGridData = async (data, year = null, month = null, daysInMonth
 
 
 
-  const renderAvailableMonths = () => {
-    const activeStatuses = Object.keys(statuses).filter(
-      (status) => statuses[status]
-    );
-    const filteredMonths =
-      activeStatuses.length === 0
-        ? availableMonths
-        : availableMonths.filter((month) =>
-            activeStatuses.includes(
-              statusMapping[month.ApprovalStatus].toLowerCase()
-            )
-          );
+  // const renderAvailableMonths = () => {
+  //   const activeStatuses = Object.keys(statuses).filter(
+  //     (status) => statuses[status]
+  //   );
+  //   const filteredMonths =
+  //     activeStatuses.length === 0
+  //       ? availableMonths
+  //       : availableMonths.filter((month) =>
+  //           activeStatuses.includes(
+  //             statusMapping[month.ApprovalStatus].toLowerCase()
+  //           )
+  //         );
 
-    return filteredMonths.map((month) => (
-      <Button
-        key={`${month.Year}-${month.Month}`}
-        variant="contained"
-        className="month-button"
-        onClick={() => {
-          fetchTimesheetDataForMonth(month.Year, month.Month);
-        }}
-      >
-        {month.Year}-{month.Month} ({statusMapping[month.ApprovalStatus]})
-      </Button>
-    ));
-  };
+  //   return filteredMonths.map((month) => (
+  //     <Button
+  //       key={`${month.Year}-${month.Month}`}
+  //       variant="contained"
+  //       className="month-button"
+  //       onClick={() => {
+  //         fetchTimesheetDataForMonth(month.Year, month.Month);
+  //       }}
+  //     >
+  //       {month.Year}-{month.Month} ({statusMapping[month.ApprovalStatus]})
+  //     </Button>
+  //   ));
+  // };
 
-  const getCalculatedWidth = () => {
-    // Get the viewport width
-    const vw = Math.max(
-      document.documentElement.clientWidth || 0,
-      window.innerWidth || 0
-    );
-    // Calculate 7vw in pixels
-    const calcWidth = (5 * vw) / 100;
-    // Return the maximum of 90 or 7vw
-    return Math.max(90, calcWidth);
-  };
+  // const getCalculatedWidth = () => {
+  //   // Get the viewport width
+  //   const vw = Math.max(
+  //     document.documentElement.clientWidth || 0,
+  //     window.innerWidth || 0
+  //   );
+  //   // Calculate 7vw in pixels
+  //   const calcWidth = (5 * vw) / 100;
+  //   // Return the maximum of 90 or 7vw
+  //   return Math.max(90, calcWidth);
+  // };
 
   const renderEmployeeList = () => {
     const columnDefs = [

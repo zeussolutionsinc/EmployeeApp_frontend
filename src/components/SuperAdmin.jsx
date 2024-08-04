@@ -14,7 +14,7 @@ function SuperAdmin() {
   const [rowData, setRowData] = useState([]);
   const [gridApi, setGridApi] = useState(null);
   const [selectedEmployees, setSelectedEmployees] = useState([]);
-  const [employees, setEmployees] = useState([]);
+  // const [employees, setEmployees] = useState([]);
   const [employeesToBeAdmin, setEmployeesToBeAdmin] = useState([]);
   const [employeesToBeSuperAdmin, setEmployeesToBeSuperAdmin] = useState([]);
   const [approvers, setApprovers] = useState([]);
@@ -82,7 +82,7 @@ function SuperAdmin() {
             "employeeData:",
             JSON.stringify(employeeData, null, 2).length
           );
-          setEmployees(employeeData);
+          // setEmployees(employeeData);
           setApprovers(approverData.map((app) => app.id));
           setApproverMap(approverMap);
 
