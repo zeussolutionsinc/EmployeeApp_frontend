@@ -59,4 +59,4 @@ jobs:
           app-name: 'zeusemployeeportal'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_03B17C947DD34AE186E8FBE3EEDA1DF9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AC57EB58496B4D609D53EC3353E1ED97 }}
