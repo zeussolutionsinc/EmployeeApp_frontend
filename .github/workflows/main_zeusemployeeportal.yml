@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BASE_PATH: "/your-base-path"
+      BASE_PATH: "/"
 
     steps:
       - uses: actions/checkout@v4
