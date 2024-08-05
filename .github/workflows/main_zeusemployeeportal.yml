@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - zeusemployeeportal
 
 on:
@@ -12,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BASE_PATH: "/your-base-path"
 
     steps:
       - uses: actions/checkout@v4
@@ -26,9 +25,13 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
+        env:
+          BASE_PATH: ${{ env.BASE_PATH }}
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: zip -r release.zip .
+        env:
+          BASE_PATH: ${{ env.BASE_PATH }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -42,6 +45,8 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    env:
+      BASE_PATH: "/your-base-path"
     
     steps:
       - name: Download artifact from build job
@@ -50,7 +55,7 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
+        run: unzip release.zip -d release-dir
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -58,5 +63,7 @@ jobs:
         with:
           app-name: 'zeusemployeeportal'
           slot-name: 'Production'
-          package: .
+          package: ./release-dir
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AC57EB58496B4D609D53EC3353E1ED97 }}
+        env:
+          BASE_PATH: ${{ env.BASE_PATH }}
