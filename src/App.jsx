@@ -3,7 +3,7 @@ import Home from './pages/HomePage'
 
 function App() {
   return (
-    <Home />
+    <h1>testingr reactjs</h1>
   )
 }
 

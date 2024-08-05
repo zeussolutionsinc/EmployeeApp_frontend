@@ -12,7 +12,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Main />
+      {/* <Main /> */}
+      <h1>TESTING REACT</h1>
     </ThemeProvider>
   </React.StrictMode>
 );
