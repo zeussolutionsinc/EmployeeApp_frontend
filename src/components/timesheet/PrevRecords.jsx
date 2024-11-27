@@ -53,7 +53,7 @@ export default function PrevRecords({ setRecordSelected }) {
       const authId = user.sub.substring(6);
       const fetchData = async () => {
         try {
-          const url = `/api/PreviousRecords/authid/${authId}`;
+          const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/PreviousRecords/authid/${authId}`;
           const response = await fetch(url, {
             method: "GET",
             headers: {

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import theme from "./theme.js"
-import Main from './MainIndex';
+import Main from './MainIndex.js';
 import { ThemeProvider } from '@mui/material/styles';
 
 // Create the root element

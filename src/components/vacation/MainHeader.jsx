@@ -14,7 +14,7 @@ function MainHeader({ onCreatePost }) {
     useEffect(() => {
         const checkIfUserExists = async () => {
             if (isAuthenticated && user) {
-                const response = await fetch(`/api/EmployeeLogin/${user.sub.substring(6)}`);
+                const response = await fetch(`https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeLogin/${user.sub.substring(6)}`);
                 if (response.ok) {
                     const data = await response.json();
                     if (!data) {

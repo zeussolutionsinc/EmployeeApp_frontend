@@ -223,7 +223,7 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
   useEffect(() => {
     const fetchEmpId = async () => {
       try {
-        const url = `/api/EmployeeLogin/${authId}`;
+        const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeLogin/${authId}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
@@ -251,7 +251,7 @@ function GridV5({ setPostData, postData, tableData, setTableData }) {
     const fetchData = async () => {
       try {
         console.log("EmPIDTesting", employeeId);
-        const url = `https://localhost:7078/api/CopyPreviousRecord?EmpId=${employeeId}`;
+        const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/CopyPreviousRecord?EmpId=${employeeId}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {

@@ -14,7 +14,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const url = `/api/EmployeeLogin/${authId}`;
+            const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeLogin/${authId}`;
             const response = await fetch(url, {
               method: "GET",
               headers: {
@@ -54,7 +54,7 @@ const HomePage = () => {
             <div className={styles.content}>
                 <h1>Welcome, {employeeName}</h1>
                 <div className={styles.links}>
-                    <a href="#" className={styles.link}>Employee Handbook</a>
+                    <a href="#" className={styles.link}>Zeus Employee Handbook</a>
                     <a href="#" className={styles.link}>ADP Portal</a>
                     <a href="#" className={styles.link}>Employee Benefits</a>
                 </div>

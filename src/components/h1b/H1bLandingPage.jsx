@@ -37,7 +37,7 @@ export default function H1bLanding() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `/api/H1b/authid/${authId}`;
+        const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/H1b/authid/${authId}`;
 
         console.log("Making request to:", url.toString());
 

@@ -13,7 +13,7 @@ function PostsList(){
     useEffect(() => {
         const fetchData = async () => {
           try{
-            const response = await fetch(`/api/VacationAppItems/authid/${user.sub.substring(6)}`);
+            const response = await fetch(`https://zeusemployeeportalbackend.azurewebsites.net/api/VacationAppItems/authid/${user.sub.substring(6)}`);
           if (!response.ok) { 
             throw new Error('Network response was not ok');
           }

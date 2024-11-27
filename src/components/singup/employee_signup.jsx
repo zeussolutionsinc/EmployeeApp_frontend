@@ -130,7 +130,7 @@ export async function action({ request }) {
 
   try {
     // First API call to store data in Employee table
-    const employeeResponse = await fetch("/api/Employee", {
+    const employeeResponse = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/Employee", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(employeeData),
@@ -151,7 +151,7 @@ export async function action({ request }) {
       EmployeeName: `${formData.get("firstName")} ${formData.get("lastName")}`, // Concatenated full name
     };
     console.log("EmpLogin:", loginData);
-    const loginResponse = await fetch("/api/EmployeeLogin", {
+    const loginResponse = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeLogin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),

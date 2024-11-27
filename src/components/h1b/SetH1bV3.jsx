@@ -131,7 +131,7 @@ export default function SetH1bV3({ retrievedFormData }) {
       await validationSchema.validate(submissionData, { abortEarly: false });
       console.log("This is it: ", submissionData);
       const method = retrievedFormData?.registrationId ? "PUT" : "POST";
-      const url = `/api/H1b${retrievedFormData?.registrationId ? `/${retrievedFormData.registrationId}` : `/authid/${authId}`}`;
+      const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/H1b${retrievedFormData?.registrationId ? `/${retrievedFormData.registrationId}` : `/authid/${authId}`}`;
 
       const response = await fetch(url, {
         method: method,

@@ -157,7 +157,7 @@ export default function DashboardV3() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `/api/TimeSheet/authid/${authId}`;
+        const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/TimeSheet/authid/${authId}`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
@@ -200,7 +200,7 @@ export default function DashboardV3() {
     try {
       if (user) {
         const authId = user.sub.substring(6);
-        const url = `/api/TimeSheetStatsDashboard/authid/${authId}`;
+        const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/TimeSheetStatsDashboard/authid/${authId}`;
         const response = await fetch(url);
         if (!response.ok) throw new Error("Network response was not ok");
         const json = await response.json();
@@ -263,7 +263,7 @@ export default function DashboardV3() {
     if (recordSelected) {
       const fetchData = async () => {
         try {
-          const url = `/api/RecordRetrieve?RecordNumber=${recordSelected}`;
+          const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/RecordRetrieve?RecordNumber=${recordSelected}`;
           const response = await fetch(url, {
             method: "GET",
             headers: {

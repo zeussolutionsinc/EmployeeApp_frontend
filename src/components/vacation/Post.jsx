@@ -72,7 +72,7 @@ export async function action({ request }) {
     console.log(request);
     const formData = await request.formData();
     const postData = Object.fromEntries(formData);
-    await fetch('/api/VacationAppItems/' + formData.get('id'), {
+    await fetch('https://zeusemployeeportalbackend.azurewebsites.net/api/VacationAppItems/' + formData.get('id'), {
         method: 'PUT',
         body: JSON.stringify(postData),
         headers: {

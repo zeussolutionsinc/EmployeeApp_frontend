@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ag-grid-community/all-modules": "^27.3.0",
-    "@ag-grid-community/core": "^32.0.2",
-    "@ag-grid-community/react": "^32.0.2",
-    "@ag-grid-community/styles": "^32.0.2",
     "@auth0/auth0-react": "^2.2.4",
     "@azure/storage-blob": "^12.17.0",
     "@emotion/react": "^11.11.4",
@@ -29,10 +25,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "react-scripts build",
+    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://localhost:7078",
   "eslintConfig": {
     "extends": [
       "react-app",

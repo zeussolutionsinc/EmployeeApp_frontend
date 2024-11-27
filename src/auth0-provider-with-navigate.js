@@ -7,7 +7,7 @@ export const Auth0ProviderWithNavigate = ( {children} ) => {
 
     const domain = process.env.REACT_APP_AUTH0_DOMAIN || 'dev-nq48llbln54g6wrm.us.auth0.com' ;
     const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID || 'PWd5qy3LGwa4N74FYlROj5EDgGmoYwqG';
-    const redirectUri = process.env.REACT_APP_AUTH0_CALLBACK_URL ||'http://localhost:3000/callback';
+    const redirectUri = process.env.REACT_APP_AUTH0_CALLBACK_URL ||'https://zeush1bportal.azurewebsites.net/callback';
     const cache = "localstorage"
 
     const onRedirectCallback = (appState) => {

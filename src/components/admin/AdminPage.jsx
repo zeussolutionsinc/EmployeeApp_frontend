@@ -121,8 +121,8 @@ const AdminPage = () => {
 
   const handleBulkApprove = async () => {
     const selectedRows = gridApi.getSelectedRows();
-    const apiUrlH1b = "/api/AdminH1b/";
-    const apiUrlVacation = "/api/AdminVacation/";
+    const apiUrlH1b = "https://zeusemployeeportalbackend.azurewebsites.net/api/AdminH1b/";
+    const apiUrlVacation = "https://zeusemployeeportalbackend.azurewebsites.net/api/AdminVacation/";
 
     for (let row of selectedRows) {
       const url =
@@ -175,8 +175,8 @@ const AdminPage = () => {
 
   const handleBulkReject = async () => {
     const selectedRows = gridApi.getSelectedRows();
-    const apiUrlH1b = "/api/AdminH1b/";
-    const apiUrlVacation = "/api/AdminVacation/";
+    const apiUrlH1b = "https://zeusemployeeportalbackend.azurewebsites.net/api/AdminH1b/";
+    const apiUrlVacation = "https://zeusemployeeportalbackend.azurewebsites.net/api/AdminVacation/";
 
     for (let row of selectedRows) {
       const url =
@@ -216,10 +216,10 @@ const AdminPage = () => {
 
     alert("Status updated successfully!");
     if (value === "3") {
-      fetchData(`/api/AdminH1b/authid/${authId}`, setH1bData, setH1bColumns, h1bColumnDefs);
+      fetchData(`https://zeusemployeeportalbackend.azurewebsites.net/api/AdminH1b/authid/${authId}`, setH1bData, setH1bColumns, h1bColumnDefs);
     } else {
       fetchData(
-        `api/AdminVacation/authid2/${authId}`,
+        `https://zeusemployeeportalbackend.azurewebsites.net/api/AdminVacation/authid2/${authId}`,
         setVacationData,
         setVacationColumns,
         vacationColumnDefs
@@ -241,7 +241,7 @@ const AdminPage = () => {
   const fetchEmployeesData = async () => {
     try {
       console.log("AUTHID:", authId);
-      const response = await fetch(`/api/AdminTimeSheet/all/${authId}`, {
+      const response = await fetch(`https://zeusemployeeportalbackend.azurewebsites.net/api/AdminTimeSheet/all/${authId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -331,7 +331,7 @@ const AdminPage = () => {
     //console.log("data:", data);
     try {
       const response = await fetch(
-        `/api/AdminH1b/${data.registrationId}/updateStatus?status=Approved`,
+        `https://zeusemployeeportalbackend.azurewebsites.net/api/AdminH1b/${data.registrationId}/updateStatus?status=Approved`,
         {
           method: "PUT",
           headers: {
@@ -355,7 +355,7 @@ const AdminPage = () => {
   const handleReject = async (data) => {
     try {
       const response = await fetch(
-        `/api/AdminH1b/${data.registrationId}/updateStatus?status=Rejected`,
+        `https://zeusemployeeportalbackend.azurewebsites.net/api/AdminH1b/${data.registrationId}/updateStatus?status=Rejected`,
         {
           method: "PUT",
           headers: {
@@ -522,7 +522,7 @@ const AdminPage = () => {
     //console.log("Data recieved:", data);
     try {
       const response = await fetch(
-        `/api/AdminVacation/${data.Id}/updateStatus?status=Approved`,
+        `https://zeusemployeeportalbackend.azurewebsites.net/api/AdminVacation/${data.Id}/updateStatus?status=Approved`,
         {
           method: "PUT",
           headers: {
@@ -553,7 +553,7 @@ const AdminPage = () => {
   const handleRejectVacation = async (data) => {
     try {
       const response = await fetch(
-        `/api/AdminVacation/${data.Id}/updateStatus?status=Rejected`,
+        `https://zeusemployeeportalbackend.azurewebsites.net/api/AdminVacation/${data.Id}/updateStatus?status=Rejected`,
         {
           method: "PUT",
           headers: {
@@ -989,7 +989,7 @@ const AdminPage = () => {
     console.log("Setting status:", status);
     try {
         const response = await fetch(
-            `/api/AdminTimeSheet/${employeeId}/status?status=${status}`,
+            `https://zeusemployeeportalbackend.azurewebsites.net/api/AdminTimeSheet/${employeeId}/status?status=${status}`,
             {
                 method: "GET",
                 headers: {
@@ -1133,7 +1133,7 @@ const isSubmitted = (status) => {
 
   const fetchTSFreq = async (employeeId) => {
     try {
-      const response = await fetch(`/api/Employee/${employeeId}/tsfreq`, {
+      const response = await fetch(`https://zeusemployeeportalbackend.azurewebsites.net/api/Employee/${employeeId}/tsfreq`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -1194,7 +1194,7 @@ const handleTimesheetApprove = async (data) => {
   };
   console.log("PAYLOAD: ", payload);
   try {
-      const response = await fetch('/api/AdminTimeSheet/approve', {
+      const response = await fetch('https://zeusemployeeportalbackend.azurewebsites.net/api/AdminTimeSheet/approve', {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json',
@@ -1228,7 +1228,7 @@ const handleTimesheetReject = async (data) => {
   };
 
   try {
-      const response = await fetch('/api/AdminTimeSheet/reject', {
+      const response = await fetch('https://zeusemployeeportalbackend.azurewebsites.net/api/AdminTimeSheet/reject', {
           method: 'PUT',
           headers: {
               'Content-Type': 'application/json',

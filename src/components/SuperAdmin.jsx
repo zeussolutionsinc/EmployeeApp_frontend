@@ -40,7 +40,7 @@ function SuperAdmin() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `/api/EmployeeList`;
+        const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeList`;
         const response = await fetch(url, {
           method: "GET",
           headers: {
@@ -87,7 +87,7 @@ function SuperAdmin() {
           setApproverMap(approverMap);
 
           const approverXEmployeeResponse = await fetch(
-            "/api/EmployeeList/GetApproverXEmployee",
+            "https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeList/GetApproverXEmployee",
             {
               method: "GET",
               headers: {
@@ -114,7 +114,7 @@ function SuperAdmin() {
           setEmployeesToBeAdmin(empToBeApp);
         
         
-        const superAdminResponse = await fetch("/api/SuperAdmin/GetSuperAdmins", {
+        const superAdminResponse = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/SuperAdmin/GetSuperAdmins", {
           method: "GET",
           headers: {
             Accept: "application/json",
@@ -200,7 +200,7 @@ function SuperAdmin() {
   const handleAddApprovers = async (approverIds) => {
     if (approverIds.length === 0) return;
     try {
-      const response = await fetch("/api/EmployeeList/AddApprovers", {
+      const response = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeList/AddApprovers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -224,7 +224,7 @@ function SuperAdmin() {
     if (approverXEmployees.length === 0) return;
     try {
       const response = await fetch(
-        "/api/EmployeeList/SetEmployeeApproverRelation",
+        "https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeList/SetEmployeeApproverRelation",
         {
           method: "POST",
           headers: {
@@ -250,7 +250,7 @@ function SuperAdmin() {
     const employeeIds = selectedEmployees.map((employee) => employee.id);
   
     try {
-      const response = await fetch("/api/SuperAdmin/SetSuperAdmin", {
+      const response = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/SuperAdmin/SetSuperAdmin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

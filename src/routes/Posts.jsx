@@ -18,7 +18,7 @@ function Posts() {
 export default Posts;
 
 export async function loader({params}){
-  const response = await fetch(`/api/VacationAppItems`)
+  const response = await fetch(`https://zeusemployeeportalbackend.azurewebsites.net/api/VacationAppItems`)
   const resData = await response.json()
   return(resData)
 }
