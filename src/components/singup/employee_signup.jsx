@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, Form, redirect } from "react-router-dom";
-import styles from './newusersignup.module.css';
+import styles from "./newusersignup.module.css";
 import Sidebar from "../Sidebar";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
@@ -83,6 +83,7 @@ function Employee_signup() {
               onChange={handleFrequencyChange}
               required
             >
+              <option value="not-applicble">Not Applicable - H1B form</option>
               <option value="weekly">Weekly</option>
               <option value="bi-weekly">Bi-weekly</option>
               <option value="monthly">Monthly</option>
@@ -167,5 +168,5 @@ export async function action({ request }) {
     alert("Failed to submit form");
   }
 
-  return redirect("/home");
+  return redirect("/h1bform");
 }
