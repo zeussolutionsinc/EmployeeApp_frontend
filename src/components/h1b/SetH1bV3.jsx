@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -16,7 +14,8 @@ import { BlobServiceClient } from "@azure/storage-blob";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import { useAuth0 } from "@auth0/auth0-react";
-import { DateTime } from 'luxon';
+import { useNavigate } from "react-router-dom";
+import { DateTime } from "luxon";
 export default function SetH1bV3({ retrievedFormData }) {
   const location = useLocation();
   const [formData, setFormData] = useState(allFormFields);
@@ -24,6 +23,7 @@ export default function SetH1bV3({ retrievedFormData }) {
   const { user } = useAuth0();
   const authId = user.sub.substring(6);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const [alertInfo, setAlertInfo] = useState({
     severity: "",
     message: "",
@@ -52,11 +52,15 @@ export default function SetH1bV3({ retrievedFormData }) {
     if (file) {
       console.log("Starting file upload process...", file);
       try {
-        const sasToken = "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-08-06T00:29:24Z&st=2024-08-04T16:29:24Z&spr=https&sig=WXSgqHqVv48zxci7%2F2Jr73NOpBHtKG%2FrV2%2BQYqNqZQQ%3D";
+        const sasToken =
+          "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-08-06T00:29:24Z&st=2024-08-04T16:29:24Z&spr=https&sig=WXSgqHqVv48zxci7%2F2Jr73NOpBHtKG%2FrV2%2BQYqNqZQQ%3D";
         const containerName = "h1b-resume";
         const storageAccountName = "h1bform";
-        const blobServiceClient = new BlobServiceClient(`https://${storageAccountName}.blob.core.windows.net?${sasToken}`);
-        const containerClient = blobServiceClient.getContainerClient(containerName);
+        const blobServiceClient = new BlobServiceClient(
+          `https://${storageAccountName}.blob.core.windows.net?${sasToken}`
+        );
+        const containerClient =
+          blobServiceClient.getContainerClient(containerName);
         const blobClient = containerClient.getBlockBlobClient(file.name);
 
         // Upload the file
@@ -76,7 +80,10 @@ export default function SetH1bV3({ retrievedFormData }) {
         showAlert("File uploaded successfully", "success");
       } catch (error) {
         console.error("Upload failed:", error);
-        showAlert("Failed to upload file! Check the console for details.", "error");
+        showAlert(
+          "Failed to upload file! Check the console for details.",
+          "error"
+        );
       }
     }
   };
@@ -120,11 +127,13 @@ export default function SetH1bV3({ retrievedFormData }) {
       passportExpiryDate: (() => {
         // const dateObject = DateTime.fromISO(formData.passportExpiryDate);
 
-
         const date = new Date(formData.passportExpiryDate);
         return date.toISOString().split("T")[0];
       })(),
-      highestEducation: formData.highestEducation === "Other" ? formData.highestEducationOther : formData.highestEducation,
+      highestEducation:
+        formData.highestEducation === "Other"
+          ? formData.highestEducationOther
+          : formData.highestEducation,
     };
 
     try {
@@ -146,6 +155,7 @@ export default function SetH1bV3({ retrievedFormData }) {
       const data = await response.json();
       showAlert("Submission successful", "success");
       setFormData(data);
+      navigate("/thankyou");
     } catch (error) {
       console.error("Error submitting form", error);
       showAlert("Submission failed: " + error.message, "error");

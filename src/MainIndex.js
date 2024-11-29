@@ -11,7 +11,7 @@ import H1bLanding from './components/h1b/H1bLandingPage';
 import EmployeeSignup, { action as employeeSignupAction } from './components/singup/employee_signup'
 import HomePage from './pages/HomePage';
 import { AuthProvider} from './AuthContext';
-
+import Thankyou from './pages/Thankyou';
 
 // // Function to check if the user is authenticated
 // const isAuthenticated = () => {
@@ -39,6 +39,8 @@ const router = createBrowserRouter(
           <Route path='/home' element={<AuthenticationGuard component={HomePage} />} />  {/* Protected HomePage route */}
           <Route path='/callback' element={<AuthenticationGuard component={CallbackPage} />}></Route>
           <Route path='/h1bform' element={<AuthenticationGuard component={H1bLanding} />}></Route>
+          <Route path='/thankyou' element={<AuthenticationGuard component={Thankyou} />}></Route>
+
         </Route>
       </Route>
     )

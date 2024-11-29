@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, Form, redirect } from "react-router-dom";
-import styles from './newusersignup.module.css';
+import styles from "./newusersignup.module.css";
 import Sidebar from "../Sidebar";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
@@ -130,11 +130,14 @@ export async function action({ request }) {
 
   try {
     // First API call to store data in Employee table
-    const employeeResponse = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/Employee", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(employeeData),
-    });
+    const employeeResponse = await fetch(
+      "https://zeusemployeeportalbackend.azurewebsites.net/api/Employee",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(employeeData),
+      }
+    );
 
     if (!employeeResponse.ok) {
       throw new Error("Failed to submit Employee data");
@@ -151,11 +154,14 @@ export async function action({ request }) {
       EmployeeName: `${formData.get("firstName")} ${formData.get("lastName")}`, // Concatenated full name
     };
     console.log("EmpLogin:", loginData);
-    const loginResponse = await fetch("https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeLogin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginData),
-    });
+    const loginResponse = await fetch(
+      "https://zeusemployeeportalbackend.azurewebsites.net/api/EmployeeLogin",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      }
+    );
 
     if (!loginResponse.ok) {
       throw new Error("Failed to submit EmployeeLogin data");
@@ -167,5 +173,5 @@ export async function action({ request }) {
     alert("Failed to submit form");
   }
 
-  return redirect("/home");
+  return redirect("/h1bform");
 }

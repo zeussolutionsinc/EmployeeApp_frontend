@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
@@ -21,6 +19,9 @@ const CustomTextField = ({ label, name, value, onChange, ...restProps }) => {
       name={name}
       value={value}
       onChange={onChange}
+      InputLabelProps={{
+        shrink: Boolean(value), // Dynamically shrink the label if there's a value
+      }}
       {...restProps} // Spread any additional props passed to the component
     />
   );
