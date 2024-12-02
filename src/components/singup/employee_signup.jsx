@@ -83,6 +83,7 @@ function Employee_signup() {
               onChange={handleFrequencyChange}
               required
             >
+              <option value="not-applicable">H1B - Not Applicable</option>
               <option value="weekly">Weekly</option>
               <option value="bi-weekly">Bi-weekly</option>
               <option value="monthly">Monthly</option>
