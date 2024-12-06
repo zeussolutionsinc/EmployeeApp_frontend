@@ -125,10 +125,19 @@ export default function SetH1bV3({ retrievedFormData }) {
       onOPT: formData.onOPT === "Yes",
       workedInUS: formData.workedInUS === "Yes",
       passportExpiryDate: (() => {
-        // const dateObject = DateTime.fromISO(formData.passportExpiryDate);
-
-        const date = new Date(formData.passportExpiryDate);
-        return date.toISOString().split("T")[0];
+        try {
+          if (!formData.passportExpiryDate) {
+            throw new Error("Date is missing");
+          }
+          const date = new Date(formData.passportExpiryDate);
+          if (isNaN(date.getTime())) {
+            throw new Error("Invalid date format");
+          }
+          return date.toISOString().split("T")[0];
+        } catch (error) {
+          console.error("Error parsing passport expiry date:", error.message);
+          return null; // Or return a default value, if needed
+        }
       })(),
       highestEducation:
         formData.highestEducation === "Other"
@@ -137,10 +146,20 @@ export default function SetH1bV3({ retrievedFormData }) {
     };
 
     try {
+      // Validate form data using the schema
       await validationSchema.validate(submissionData, { abortEarly: false });
+
+      // If validation passes, clear any existing errors
+      setErrors({});
+
       console.log("This is it: ", submissionData);
       const method = retrievedFormData?.registrationId ? "PUT" : "POST";
-      const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/H1b${retrievedFormData?.registrationId ? `/${retrievedFormData.registrationId}` : `/authid/${authId}`}`;
+      //
+      const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/H1b${
+        retrievedFormData?.registrationId
+          ? `/${retrievedFormData.registrationId}`
+          : `/authid/${authId}`
+      }`;
 
       const response = await fetch(url, {
         method: method,
@@ -149,16 +168,26 @@ export default function SetH1bV3({ retrievedFormData }) {
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        const errorText = await response.text(); // Read the text directly from the response
+        throw new Error(errorText || "An unknown error occurred");
       }
 
       const data = await response.json();
       showAlert("Submission successful", "success");
       setFormData(data);
       navigate("/thankyou");
-    } catch (error) {
-      console.error("Error submitting form", error);
-      showAlert("Submission failed: " + error.message, "error");
+    } catch (validationError) {
+      if (validationError.name === "ValidationError") {
+        // Extract validation errors and map them to state
+        const errorObject = validationError.inner.reduce((acc, curr) => {
+          acc[curr.path] = curr.message; // Field name -> Error message
+          return acc;
+        }, {});
+        setErrors(errorObject); // Set errors to state for display
+      } else {
+        console.error("Error submitting form", validationError);
+        showAlert("Submission failed: " + validationError.message, "error");
+      }
     }
   };
 
@@ -346,6 +375,8 @@ export default function SetH1bV3({ retrievedFormData }) {
                   { label: "No", value: "No" },
                 ]}
                 onChange={handleChange}
+                error={!!errors.onOPT} // Set true if there's an error
+                helperText={errors.onOPT} // Display error message
               />
               {errors.onOPT && <div className="errors">{errors.onOPT}</div>}
             </Grid>
@@ -359,6 +390,8 @@ export default function SetH1bV3({ retrievedFormData }) {
                   { label: "No", value: "No" },
                 ]}
                 onChange={handleChange}
+                error={!!errors.workedInUS} // Set true if there's an error
+                helperText={errors.workedInUS} // Display error message
               />
               {errors.workedInUS && (
                 <div className="errors">{errors.workedInUS}</div>
