@@ -12,6 +12,7 @@ import EmployeeSignup, { action as employeeSignupAction } from './components/sin
 import HomePage from './pages/HomePage';
 import { AuthProvider} from './AuthContext';
 import Thankyou from './pages/Thankyou';
+import H1bAdmin from './components/h1badmin/H1bAdmin';
 
 // // Function to check if the user is authenticated
 // const isAuthenticated = () => {
@@ -34,14 +35,15 @@ import Thankyou from './pages/Thankyou';
 const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Auth0ProviderWithNavigate />} >
-        <Route path='/' element={<RootLayout />}>
+        <Route path='/' element={<RootLayout />}></Route>
           <Route path="/signup" element={<EmployeeSignup />} action={employeeSignupAction} />
           <Route path='/home' element={<AuthenticationGuard component={HomePage} />} />  {/* Protected HomePage route */}
           <Route path='/callback' element={<AuthenticationGuard component={CallbackPage} />}></Route>
           <Route path='/h1bform' element={<AuthenticationGuard component={H1bLanding} />}></Route>
           <Route path='/thankyou' element={<AuthenticationGuard component={Thankyou} />}></Route>
+          <Route path='/admin' element={<AuthenticationGuard component={H1bAdmin} />}></Route>
 
-        </Route>
+     
       </Route>
     )
 );
