@@ -50,7 +50,7 @@ export default function SetH1bV3({ retrievedFormData }) {
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
-      console.log("Starting file upload process...", file);
+      //console.log("Starting file upload process...", file);
       try {
         const sasToken =
           "sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2025-08-06T00:29:24Z&st=2024-08-04T16:29:24Z&spr=https&sig=WXSgqHqVv48zxci7%2F2Jr73NOpBHtKG%2FrV2%2BQYqNqZQQ%3D";
@@ -70,7 +70,7 @@ export default function SetH1bV3({ retrievedFormData }) {
 
         // After successful upload, get the URL of the uploaded file
         const url = blobClient.url;
-        console.log("File uploaded to:", url);
+        //console.log("File uploaded to:", url);
 
         // Update the formData state with the URL instead of the file object
         setFormData({
@@ -152,7 +152,7 @@ export default function SetH1bV3({ retrievedFormData }) {
       // If validation passes, clear any existing errors
       setErrors({});
 
-      console.log("This is it: ", submissionData);
+      //console.log("This is it: ", submissionData);
       const method = retrievedFormData?.registrationId ? "PUT" : "POST";
       //
       const url = `https://zeusemployeeportalbackend.azurewebsites.net/api/H1b${
@@ -186,7 +186,7 @@ export default function SetH1bV3({ retrievedFormData }) {
         setErrors(errorObject); // Set errors to state for display
       } else {
         console.error("Error submitting form", validationError);
-        showAlert("Submission failed: " + validationError.message, "error");
+        showAlert("Submission failed: Please login again");
       }
     }
   };

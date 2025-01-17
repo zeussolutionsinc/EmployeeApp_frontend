@@ -13,6 +13,8 @@ import HomePage from './pages/HomePage';
 import { AuthProvider} from './AuthContext';
 import Thankyou from './pages/Thankyou';
 import H1bAdmin from './components/h1badmin/H1bAdmin';
+import GetH1bForm from './components/h1b/GetH1bForm';
+import GetH1bAdmin from './components/h1badmin/GetH1bAdmin';
 
 // // Function to check if the user is authenticated
 // const isAuthenticated = () => {
@@ -41,7 +43,10 @@ const router = createBrowserRouter(
           <Route path='/callback' element={<AuthenticationGuard component={CallbackPage} />}></Route>
           <Route path='/h1bform' element={<AuthenticationGuard component={H1bLanding} />}></Route>
           <Route path='/thankyou' element={<AuthenticationGuard component={Thankyou} />}></Route>
-          <Route path='/admin' element={<AuthenticationGuard component={H1bAdmin} />}></Route>
+          {/* <Route path='/admin' element={<AuthenticationGuard component={H1bAdmin} />}></Route> */}
+          <Route path='/geth1bform' element={<AuthenticationGuard component={GetH1bForm} />}></Route>
+          <Route path='/geth1badmin' element={<AuthenticationGuard component={GetH1bAdmin} />}></Route>
+
 
      
       </Route>
